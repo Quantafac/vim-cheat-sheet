@@ -1,0 +1,81 @@
+VI/VIM cheat sheet pt.1, by MeaTLoTioN November 12, 2021
+
+
+NORMAL MODE:
+- Cursor movement
+  Left one char         = H / Left Arrow
+  Right one char        = L / Right Arrow
+  Up one char           = K / Up Arrow
+  Down one char         = J / Down Arrow
+
+  Left one word         = b
+  Right one word        = w
+  Move to Start of line = 0
+  Move to End of line   = $
+
+- String manipulation
+
+  to change a word, in NORMAL mode, move cursor to beginning of the word you 
+  wish to change, and type CW (for Change Word)
+
+  - (VIM) the word will be deleted and you will be in INSERT mode ready for 
+    you to replace the word
+  - (VI) a $ will appear at the end of the word, and when you start typing it 
+    will overwrite the word until you get to and surpass the $ sign.
+  - When you are done typing your new word, press escape to enter NORMAL mode.
+
+  to change the text within some quotes, move the cursor to anywhere on the
+  line that has the quoted text you wish to change, and type CI" or CI'
+  (depending on the type of quotes used " or ')
+  - (VIM) the text within the next set of quotes from your cursor position
+    (if not already inside the quoted text) will disappear and you will be
+    in INSERT mode ready to type your new quoted text.
+
+  if you wish to append text to the end of any line, just position your cursor
+  anywhere on the line you wish to append to the end, and type A (shift+a)
+
+  likewise, if you wish to insert text at the beginning of any line, position
+  your cursor to the line you wish to insert text at the beginning, and type
+  I (shift+i)
+
+  to find a word or substring in your document, just type / followed by the
+  word you wish to find, and press return. the cursor will move to the next
+  word that matches your search term. use n and N to search forward and back
+
+  If you want to delete a line, move the cursor to the line you wish to delete
+  and type dd and the line will disappear. If you wish to delete multiple
+  lines, move the cursor to the first line, and type Xdd where X is a number
+  of lines you wish to delete. For example, if you want to delete 6 lines
+  including the line you're on then type 6dd and those 6 lines will go.
+  You can also delete a single word, using dw once your cursor is over the
+  first character.
+
+  If you want to copy text into the buffer, you need to yank. you can yank
+  various things, if you want to yank the entire line, just type yy or if
+  you want to yank a word, move the cursor to the word and press yw.
+
+  To paste any yanked text, move the cursor to where you wish to paste, and
+  press p to paste _after_ the cursor or P to paste from the cursor. You can
+  also paste lines and words that were deleted with dd or dw
+
+  Visual editing, is useful to visually highlight text, either by row or
+  by column, example to select a paragraph of text, move the cursor to the top
+  line of the paragraph, and press shift+v and then down arrow until the
+  highlight is at the last line of the text you want selected. Press y to
+  yank that text into the buffer.
+
+COMMAND mode:
+  to substitute substrings in your document, type : to enter COMMAND mode and
+  type %s/ (for substitution) followed by a word or substring to match against
+  then type / and then type a substring to replace it with, finish off with
+  /g to make it global as in any matches throughout the document. example;
+  :%s/substitute/change/g would change all instances of the word substitute
+  with the word change in this document.
+
+  Did you know you can time travel in vim. No? let me explain.
+  If you were editing a document, and you realised that you made an error some
+  10 minutes ago, and everything you edited after is useless, just press escape
+  to go into NORMAL mode, then type :earlier 10m
+  If you overshot, and want to go ahead nearer the present, just type :later 5m
+  to go ahead 5 minutes. Valid times are minutes (m) seconds (s) hours (h)
+
